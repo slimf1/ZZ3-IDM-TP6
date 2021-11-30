@@ -1,8 +1,6 @@
 #ifndef KAHAN_VECTOR_SUM
 #define KAHAN_VECTOR_SUM
 
-#include "base_vector_sum.hpp"
-
 class KahanVectorSum {
 private:
     double _c = 0.0;

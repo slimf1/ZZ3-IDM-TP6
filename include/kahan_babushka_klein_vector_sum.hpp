@@ -4,6 +4,8 @@
 #include <cmath>
 #include "base_vector_sum.hpp"
 
+namespace idm {
+
 class KahanBabushkaKleinVectorSum {
 private:
     double _sum = 0.0;
@@ -37,5 +39,7 @@ public:
         return _sum + _cs + _ccs;
     } 
 };
+
+}
 
 #endif // KAHAN_BABUSHKA_KLEIN_VECTOR_SUM

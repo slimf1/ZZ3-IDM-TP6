@@ -1,6 +1,8 @@
 #ifndef KAHAN_VECTOR_SUM
 #define KAHAN_VECTOR_SUM
 
+namespace idm {
+
 class KahanVectorSum {
 private:
     double _c = 0.0;
@@ -14,5 +16,7 @@ public:
         return _t;
     }
 };
+
+}
 
 #endif // KAHAN_VECTOR_SUM

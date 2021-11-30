@@ -7,6 +7,8 @@
 #include <iostream>
 #include <vector>
 
+namespace idm {
+
 template <typename BinaryOperation>
 struct AccumulateSum {
     double operator()(const std::vector<double>& vector) const {
@@ -35,5 +37,7 @@ struct VectorSumCalculator {
         printf("Result : %.20lf, Time : %dms\n", result, static_cast<int>(fp_ms.count()));
     }
 };
+
+}
 
 #endif // BASE_VECTOR_SUM

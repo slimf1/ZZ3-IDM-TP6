@@ -7,7 +7,7 @@
 
 int main() {
     auto vector = idm::generate_random_normal_vector(5e7);
-    VectorSumCalculator<AccumulateSum<std::plus<double>>>().evaluate(vector);
-    VectorSumCalculator<AccumulateSum<KahanVectorSum>>().evaluate(vector);
-    VectorSumCalculator<ForEachSum<KahanBabushkaKleinVectorSum>>().evaluate(vector);
+    idm::VectorSumCalculator<idm::AccumulateSum<std::plus<double>>>().evaluate(vector);
+    idm::VectorSumCalculator<idm::AccumulateSum<idm::KahanVectorSum>>().evaluate(vector);
+    idm::VectorSumCalculator<idm::ForEachSum<idm::KahanBabushkaKleinVectorSum>>().evaluate(vector);
 }

@@ -3,13 +3,13 @@
 
 #include "base_vector_sum.hpp"
 
-class NaiveVectorSum : public BaseVectorSum {
+class NaiveVectorSum {
 private:
     double _current = 0;
 
 public:
 
-    void sum(double input) override {
+    void sum(double input) {
         _current += input;
     }
 

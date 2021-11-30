@@ -6,18 +6,26 @@
 #include "kahan_babushka_klein_vector_sum.hpp"
 
 int main() {
-    auto vector = idm::generate_random_normal_vector(5e8);
+    auto vector = idm::generate_random_normal_vector(5e7);
 
     // idm namespace !!!
-    
-    NaiveVectorSum s;
-    s.evaluate(vector); // méthode pour init
+    BaseVectorSum<NaiveVectorSum> s1;
+    s1.evaluate(vector);
 
-    KahanVectorSum v;
-    v.evaluate(vector);
+    BaseVectorSum<KahanVectorSum> s2;
+    s2.evaluate(vector);
 
-    KahanBabushkaKleinVectorSum b;
-    b.evaluate(vector);
+    BaseVectorSum<KahanBabushkaKleinVectorSum> s3;
+    s3.evaluate(vector);
+
+    // NaiveVectorSum s;
+    // s.evaluate(vector); // méthode pour init
+
+    // KahanVectorSum v;
+    // v.evaluate(vector);
+
+    // KahanBabushkaKleinVectorSum b;
+    // b.evaluate(vector);
 
     // // 1500003897.00309705734252929688 (3e9)
     // // 1500003897.00322484970092773438

@@ -6,20 +6,20 @@
 #include <iostream>
 #include <vector>
 
-struct BaseVectorSum {
-    virtual void sum(double input) = 0;
-    virtual double resolve() const = 0;
-
+template <typename SumMethod>
+struct BaseVectorSum : public SumMethod {
     void evaluate(const std::vector<double>& vector) {
         auto t1 = std::chrono::high_resolution_clock::now();
 
-        std::for_each(vector.cbegin(), vector.cend(), [&](double value){
-            sum(value);
+        std::for_each(vector.cbegin(), vector.cend(), [this](double value){
+            this->sum(value);
         });
+
+        // std::accumulate (au dessus) & std::plus
 
         auto t2 = std::chrono::high_resolution_clock::now();   
         std::chrono::duration<double, std::milli> fp_ms = t2 - t1;
-        printf("Result : %.20lf, Time : %dms\n", resolve(), static_cast<int>(fp_ms.count()));
+        printf("Result : %.20lf, Time : %dms\n", this->resolve(), static_cast<int>(fp_ms.count()));
     }
 };
 

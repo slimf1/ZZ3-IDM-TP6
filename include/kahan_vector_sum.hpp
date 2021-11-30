@@ -3,7 +3,7 @@
 
 #include "base_vector_sum.hpp"
 
-class KahanVectorSum : public BaseVectorSum {
+class KahanVectorSum {
 private:
     double _sum = 0.0;
     double _c = 0.0;
@@ -11,7 +11,7 @@ private:
 
 public:
 
-    void sum(double input) override {
+    void sum(double input) {
         _y = input - _c;
         _t = _sum + _y;
         _c = (_t - _sum) - _y;

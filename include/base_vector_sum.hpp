@@ -2,24 +2,21 @@
 #define BASE_VECTOR_SUM
 
 #include <algorithm>
+#include <numeric>
 #include <chrono>
 #include <iostream>
 #include <vector>
 
+template <typename BinaryOperation>
 struct BaseVectorSum {
-    virtual void sum(double input) = 0;
-    virtual double resolve() const = 0;
-
     void evaluate(const std::vector<double>& vector) {
         auto t1 = std::chrono::high_resolution_clock::now();
-
-        std::for_each(vector.cbegin(), vector.cend(), [&](double value){
-            sum(value);
-        });
-
+        double result = std::accumulate
+                            <std::vector<double>::const_iterator, double, BinaryOperation>
+                            (vector.cbegin(), vector.cend(), 0.0, BinaryOperation());
         auto t2 = std::chrono::high_resolution_clock::now();   
         std::chrono::duration<double, std::milli> fp_ms = t2 - t1;
-        printf("Result : %.20lf, Time : %dms\n", resolve(), static_cast<int>(fp_ms.count()));
+        printf("Result : %.20lf, Time : %dms\n", result, static_cast<int>(fp_ms.count()));
     }
 };
 

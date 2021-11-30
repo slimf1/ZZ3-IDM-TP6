@@ -2,14 +2,13 @@
 #include <stdio.h>
 #include "random_vector.hpp"
 #include "base_vector_sum.hpp"
-// #include "naive_vector_sum.hpp"
-// #include "kahan_vector_sum.hpp"
+#include "kahan_vector_sum.hpp"
 // #include "kahan_babushka_klein_vector_sum.hpp"
 
 int main() {
-    auto vector = idm::generate_random_normal_vector(1e5);
-
-    BaseVectorSum<std::plus<double>>{}.evaluate(vector);
+    auto vector = idm::generate_random_normal_vector(5e7);
+    BaseVectorSum<std::plus<double>>().evaluate(vector);
+    BaseVectorSum<KahanVectorSum>().evaluate(vector);
 
     // idm namespace !!!
     

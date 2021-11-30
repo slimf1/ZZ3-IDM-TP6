@@ -2,25 +2,22 @@
 #define KAHAN_VECTOR_SUM
 
 #include "base_vector_sum.hpp"
+#include <iostream>
 
-class KahanVectorSum : public BaseVectorSum {
+class KahanVectorSum {
 private:
-    double _sum = 0.0;
     double _c = 0.0;
     double _t, _y;
 
 public:
-
-    void sum(double input) override {
-        _y = input - _c;
-        _t = _sum + _y;
-        _c = (_t - _sum) - _y;
-        _sum = _t; 
+    double operator()(double sum, double value) {
+        // std::cout << "sum : " << sum << ", value = " << value << '\n';
+        _y = value - _c;
+        _t = sum + _y;
+        _c = (_t - sum) - _y;
+        // std::cout << "sum: " << sum << "\n";
+        return _t;
     }
-
-    double resolve() const {
-        return _sum;
-    } 
 };
 
 #endif // KAHAN_VECTOR_SUM

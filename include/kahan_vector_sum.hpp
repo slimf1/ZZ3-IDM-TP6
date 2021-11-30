@@ -2,7 +2,6 @@
 #define KAHAN_VECTOR_SUM
 
 #include "base_vector_sum.hpp"
-#include <iostream>
 
 class KahanVectorSum {
 private:
@@ -11,11 +10,9 @@ private:
 
 public:
     double operator()(double sum, double value) {
-        // std::cout << "sum : " << sum << ", value = " << value << '\n';
         _y = value - _c;
         _t = sum + _y;
         _c = (_t - sum) - _y;
-        // std::cout << "sum: " << sum << "\n";
         return _t;
     }
 };

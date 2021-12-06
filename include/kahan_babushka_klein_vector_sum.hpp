@@ -4,7 +4,9 @@
 #include <cmath>
 #include "base_vector_sum.hpp"
 
-class KahanBabushkaKleinVectorSum : public BaseVectorSum {
+namespace idm {
+
+class KahanBabushkaKleinVectorSum {
 private:
     double _sum = 0.0;
     double _cs = 0.0;
@@ -15,7 +17,7 @@ private:
     
 public:
 
-    void sum(double input) override {
+    void sum(double input) {
         _t = _sum + input;
         if (std::fabs(_sum) >= std::fabs(input)) {
             _c = (_sum - _t) + input;
@@ -37,5 +39,7 @@ public:
         return _sum + _cs + _ccs;
     } 
 };
+
+}
 
 #endif // KAHAN_BABUSHKA_KLEIN_VECTOR_SUM

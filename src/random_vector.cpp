@@ -8,7 +8,7 @@ namespace idm {
 std::vector<double> generate_random_normal_vector(size_t size, double mu, double sigma) {
     std::vector<double> result(size);
     std::mt19937 rng;
-    std::uniform_real_distribution<double> normDist(mu, sigma);
+    std::normal_distribution normDist(mu, sigma);
 
     std::generate(result.begin(), result.end(), [&rng, &normDist](){
         return normDist(rng);
